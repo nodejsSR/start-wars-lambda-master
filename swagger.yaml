@@ -1,0 +1,286 @@
+openapi: 3.0.0
+info:
+  title: Reto Start wars api
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: '0.1'
+servers:
+  - url: https://dthxphnbdh.execute-api.us-east-1.amazonaws.com/dev/
+    description: Optional server description, e.g. Main (production) server
+  
+paths:
+  /peoples-swa:
+    get:
+      summary: Retorna personajes start wars con key objects en español.
+      description: De la APi se SWAPI  retorna los personajes de start wars traducido sus object keys en español.
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                 data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                         nombre:
+                          type: string
+                          example: Luke Skywalker
+                         altura:
+                           type: string
+                           example: 172
+                         color_cabello:
+                           type: string
+                           example: blond
+                         color_piel:
+                           type: string
+                           example: fair
+                         color_ojos:
+                           type: string
+                           example: blue
+                         anio_nacimiento:
+                          type: string
+                          example: 19bby
+                         genero:
+                           type: string
+                           example: male
+                         mundo_natal:
+                           type: string
+                           example: https://swapi.py4e.com/api/planets/1/
+                         peliculas:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/films/1/
+                         especies:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/species/1/
+                         vehiculos:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/vehicles/14/
+                         naves_estelares:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/starships/12/
+                         creado:
+                           type: string
+                           example: "2014-12-09T13:50:51.644000Z"
+                         editado:
+                           type: string
+                           example: "2014-12-20T21:17:56.891000Z"
+                         url:
+                           type: string
+                           example: https://swapi.py4e.com/api/people/1/
+  /peoples-dynamo:
+    get:
+      summary: Retorna personajes start wars desde la base de datos de dynamo.
+      description: De la APi se SWAPI  retorna los personajes de start wars traducido sus object keys en español desde dynamo.
+      responses:
+        '200':
+           description: A JSON array of user names
+           content:
+              application/json:
+                schema: 
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                           nombre:
+                            type: string
+                            example: Luke Skywalker
+                           altura:
+                             type: string
+                             example: 172
+                           color_cabello:
+                             type: string
+                             example: blond
+                           color_piel:
+                             type: string
+                             example: fair
+                           color_ojos:
+                             type: string
+                             example: blue
+                           anio_nacimiento:
+                            type: string
+                            example: 19bby
+                           genero:
+                             type: string
+                             example: male
+                           mundo_natal:
+                             type: string
+                             example: https://swapi.py4e.com/api/planets/1/
+                           peliculas:
+                              type: array
+                              items:
+                                type: string
+                                example: https://swapi.py4e.com/api/films/1/
+                           especies:
+                              type: array
+                              items:
+                                type: string
+                                example: https://swapi.py4e.com/api/species/1/
+                           vehiculos:
+                              type: array
+                              items:
+                                type: string
+                                example: https://swapi.py4e.com/api/vehicles/14/
+                           naves_estelares:
+                              type: array
+                              items:
+                                type: string
+                                example: https://swapi.py4e.com/api/starships/12/
+                           creado:
+                             type: string
+                             example: "2014-12-09T13:50:51.644000Z"
+                           editado:
+                             type: string
+                             example: "2014-12-20T21:17:56.891000Z"
+                           url:
+                             type: string
+                             example: https://swapi.py4e.com/api/people/1/
+  /people:
+    post:
+      summary: Guarda los personajes de start wars api.
+      description: Despues de hacer la consulta con people-swa coger uno de los registro json de array y guardar el personaje con ese formato json, en el cuerpo de envio de este end point como lo vemos en el ejemplo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                         nombre:
+                          type: string
+                          example: Luke Skywalker
+                         altura:
+                           type: string
+                           example: 172
+                         color_cabello:
+                           type: string
+                           example: blond
+                         color_piel:
+                           type: string
+                           example: fair
+                         color_ojos:
+                           type: string
+                           example: blue
+                         anio_nacimiento:
+                          type: string
+                          example: 19bby
+                         genero:
+                           type: string
+                           example: male
+                         mundo_natal:
+                           type: string
+                           example: https://swapi.py4e.com/api/planets/1/
+                         peliculas:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/films/1/
+                         especies:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/species/1/
+                         vehiculos:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/vehicles/14/
+                         naves_estelares:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/starships/12/
+                         creado:
+                           type: string
+                           example: "2014-12-09T13:50:51.644000Z"
+                         editado:
+                           type: string
+                           example: "2014-12-20T21:17:56.891000Z"
+                         url:
+                           type: string
+                           example: https://swapi.py4e.com/api/people/1/
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                         nombre:
+                          type: string
+                          example: Luke Skywalker
+                         altura:
+                           type: string
+                           example: 172
+                         color_cabello:
+                           type: string
+                           example: blond
+                         color_piel:
+                           type: string
+                           example: fair
+                         color_ojos:
+                           type: string
+                           example: blue
+                         anio_nacimiento:
+                          type: string
+                          example: 19bby
+                         genero:
+                           type: string
+                           example: male
+                         mundo_natal:
+                           type: string
+                           example: https://swapi.py4e.com/api/planets/1/
+                         peliculas:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/films/1/
+                         especies:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/species/1/
+                         vehiculos:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/vehicles/14/
+                         naves_estelares:
+                            type: array
+                            items:
+                              type: string
+                              example: https://swapi.py4e.com/api/starships/12/
+                         creado:
+                           type: string
+                           example: "2014-12-09T13:50:51.644000Z"
+                         editado:
+                           type: string
+                           example: "2014-12-20T21:17:56.891000Z"
+                         url:
+                           type: string
+                           example: https://swapi.py4e.com/api/people/1/
+   
+                           
+                            
+                          
+                              
+                        
+                      
+        
